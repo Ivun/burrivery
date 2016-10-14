@@ -1,47 +1,53 @@
-import 'es6-symbol/implement';
-import {Provider} from 'react-redux';
-import store from './src/redux/store';
-import AppViewContainer from './src/modules/AppViewContainer';
-import React from 'react';
-import {AppRegistry, BackAndroid} from 'react-native';
-import * as NavigationStateActions from './src/modules/navigation/NavigationState';
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ * @flow
+ */
 
-const PepperoniAppTemplate = React.createClass({
+import React, { Component } from 'react';
+import {
+  AppRegistry,
+  StyleSheet,
+  Text,
+  View
+} from 'react-native';
 
-  componentWillMount() {
-    BackAndroid.addEventListener('hardwareBackPress', this.navigateBack);
-  },
-
-  navigateBack() {
-    const navigationState = store.getState().get('navigationState');
-    const tabs = navigationState.get('tabs');
-    const tabKey = tabs.getIn(['routes', tabs.get('index')]).get('key');
-    const currentTab = navigationState.get(tabKey);
-
-    // if we are in the beginning of our tab stack
-    if (currentTab.get('index') === 0) {
-
-      // if we are not in the first tab, switch tab to the leftmost one
-      if (navigationState.get('index') !== 0) {
-        store.dispatch(NavigationStateActions.switchTab(0));
-        return true;
-      }
-
-      // otherwise let OS handle the back button action
-      return false;
-    }
-
-    store.dispatch(NavigationStateActions.popRoute());
-    return true;
-  },
-
+export default class Client extends Component {
   render() {
     return (
-      <Provider store={store}>
-        <AppViewContainer />
-      </Provider>
+      <View style={styles.container}>
+        <Text style={styles.welcome}>
+          Welcome to React Native!
+        </Text>
+        <Text style={styles.instructions}>
+          To get started, edit index.android.js
+        </Text>
+        <Text style={styles.instructions}>
+          Double tap R on your keyboard to reload,{'\n'}
+          Shake or press menu button for dev menu
+        </Text>
+      </View>
     );
   }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
+  },
 });
 
-AppRegistry.registerComponent('PepperoniAppTemplate', () => PepperoniAppTemplate);
+AppRegistry.registerComponent('Client', () => Client);

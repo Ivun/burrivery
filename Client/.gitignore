@@ -32,14 +32,7 @@ local.properties
 # node.js
 #
 node_modules/
-coverage/
 npm-debug.log
-
-# Secrets
-env.js
-
-# CocoaPods
-ios/Pods/
 
 # BUCK
 buck-out/
