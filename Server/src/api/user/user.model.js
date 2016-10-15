@@ -1,5 +1,5 @@
 import crypto from 'crypto'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcrypt-nodejs'
 import mongoose, { Schema } from 'mongoose'
 import mongooseKeywords from 'mongoose-keywords'
 import { env } from '../../config'
@@ -58,7 +58,7 @@ userSchema.pre('save', function (next) {
   /* istanbul ignore next */
   const rounds = env === 'test' ? 1 : 9
 
-  bcrypt.hash(this.password, rounds, (err, hash) => {
+  bcrypt.hash(this.password, bcrypt.genSaltSync(rounds), null, (err, hash) => {
     /* istanbul ignore next */
     if (err) return next(err)
     this.password = hash

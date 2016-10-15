@@ -1,5 +1,5 @@
 {
-  "name": "burrivery-server",
+  "name": "server",
   "version": "0.0.0",
   "main": "src",
   "private": true,
@@ -70,7 +70,7 @@
   },
   "dependencies": {
     "babel-runtime": "^6.11.6",
-    "bcrypt": "^0.8.6",
+    "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.4.0",
     "body-parser": "^1.15.1",
     "bodymen": "^1.0.1",
@@ -91,5 +91,6 @@
     "querymen": "^2.0.0",
     "rand-token": "^0.2.1",
     "request": "^2.74.0",
-    "request-promise": "^4.1.1"  }
+    "request-promise": "^4.1.1"
+  }
 }

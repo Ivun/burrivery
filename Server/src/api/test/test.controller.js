@@ -1,37 +1,37 @@
 import _ from 'lodash'
 import { success, notFound } from '../../services/response/'
-import { Product } from '.'
+import { Test } from '.'
 
 export const create = ({ bodymen: { body } }, res, next) =>
-  Product.create(body)
-    .then((product) => product.view(true))
+  Test.create(body)
+    .then((test) => test.view(true))
     .then(success(res, 201))
     .catch(next)
 
 export const index = ({ querymen: { query, select, cursor } }, res, next) =>
-  Product.find(query, select, cursor)
-    .then((products) => products.map((product) => product.view()))
+  Test.find(query, select, cursor)
+    .then((tests) => tests.map((test) => test.view()))
     .then(success(res))
     .catch(next)
 
 export const show = ({ params }, res, next) =>
-  Product.findById(params.id)
+  Test.findById(params.id)
     .then(notFound(res))
-    .then((product) => product ? product.view() : null)
+    .then((test) => test ? test.view() : null)
     .then(success(res))
     .catch(next)
 
-export const update = ({ body, params }, res, next) =>
-  Product.findById(params.id)
+export const update = ({ bodymen: { body }, params }, res, next) =>
+  Test.findById(params.id)
     .then(notFound(res))
-    .then((product) => product ? _.merge(product, body).save() : null)
-    .then((product) => product ? product.view(true) : null)
+    .then((test) => test ? _.merge(test, body).save() : null)
+    .then((test) => test ? test.view(true) : null)
     .then(success(res))
     .catch(next)
 
 export const destroy = ({ params }, res, next) =>
-  Product.findById(params.id)
+  Test.findById(params.id)
     .then(notFound(res))
-    .then((product) => product ? product.remove() : null)
+    .then((test) => test ? test.remove() : null)
     .then(success(res, 204))
     .catch(next)

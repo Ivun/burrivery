@@ -24,7 +24,7 @@ const config = {
     env: process.env.NODE_ENV || 'development',
     root: path.join(__dirname, '../../'),
     port: process.env.PORT || 9000,
-    ip: process.env.IP || '0.0.0.0',
+    ip: process.env.IP || 'localhost',
     masterKey: requireProcessEnv('MASTER_KEY'),
     jwtSecret: requireProcessEnv('JWT_SECRET'),
     mongo: {
@@ -37,7 +37,7 @@ const config = {
   },
   test: {
     mongo: {
-      uri: 'mongodb://localhost/burrivery-server-test',
+      uri: 'mongodb://localhost/server-test',
       options: {
         debug: false
       }
@@ -45,7 +45,7 @@ const config = {
   },
   development: {
     mongo: {
-      uri: 'mongodb://localhost/burrivery-server-dev',
+      uri: 'mongodb://localhost/server-dev',
       options: {
         debug: true
       }
@@ -55,7 +55,7 @@ const config = {
     ip: process.env.IP || undefined,
     port: process.env.PORT || 8080,
     mongo: {
-      uri: process.env.MONGODB_URI || 'mongodb://localhost/burrivery-server'
+      uri: process.env.MONGODB_URI || 'mongodb://localhost/server'
     }
   }
 }

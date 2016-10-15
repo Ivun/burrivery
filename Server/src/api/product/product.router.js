@@ -1,19 +1,28 @@
 import { Router } from 'express'
 import { middleware as query } from 'querymen'
+import { middleware as body } from 'bodymen'
+import { session } from '../../services/passport'
 import { create, index, show, update, destroy } from './product.controller'
-export Product, { schema } from './product.model'
+
+import { schema } from './product.model';
+export Product, { schema } from './product.model';
 
 const router = new Router()
+const { title, price, subtitle, imageSrc } = schema.tree
 
 /**
  * @api {post} /products Create product
  * @apiName CreateProduct
  * @apiGroup Product
+ * @apiPermission user
+ * @apiParam {String} access_token user access token.
  * @apiSuccess {Object} product Product's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 404 Product not found.
+ * @apiError 401 user access only.
  */
 router.post('/',
+  body({ title, price, subtitle, imageSrc  }),
   create)
 
 /**
