@@ -38,20 +38,53 @@ export const destroy = ({ params }, res, next) =>
     .then(success(res, 204))
     .catch(next)
 
-export const addProduct = ({bodymen:{body}, user}, res, next) => {
-  return ensureOrder(user._id)
-    .then((order)=>{
-      console.log(body);
+export const addProduct = ({params, body }, res, next) => {
+  const orderId = params.id;
+  const productId = params.productId;
+  const quantity = body.quantity;
 
-      var existingProduct = order.items.find((x)=>{return x.productId == body.productId});
+  return Order.findById(orderId)
+    .then(notFound(res))
+    .then((order)=>{
+      var existingProduct = order.items.find((x)=>{return x.productId == productId});
       if (existingProduct){
-        existingProduct.quantity += body.quantity;
+        existingProduct.quantity += quantity;
       }else{
-        order.items.push({productId: body.productId, quantity: body.quantity});
+        order.items.push({productId: productId, quantity: quantity});
       }
 
       return order.save();
-  }).then(success(res, 201))
+    })
+    .then(success(res, 201))
+    .catch(next);
+}
+
+export const removeProduct = ({params, body }, res, next) => {
+  const orderId = params.id;
+  const productId = params.productId;
+  const quantity = body.quantity;
+
+  return Order.findById(orderId)
+    .then((order)=>{
+      var existingProduct = order.items.find((x)=>{return x.productId == productId});
+      if (existingProduct){
+        existingProduct.quantity -= quantity;
+
+        if (existingProduct.quantity <= 0){
+          order.items = [...order.items.filter(x=>x.quantity > 0)];
+        }
+      }
+
+      return order.save();
+    })
+    .then(success(res, 201))
+    .catch(next);
+}
+
+export const requireOrder = ({user}, res, next) => {
+  return ensureOrder(user._id)
+    .then(notFound(res))
+    .then(success(res, 201))
     .catch(next);
 }
 

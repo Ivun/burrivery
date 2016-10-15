@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { middleware as query } from 'querymen'
 import { middleware as body } from 'bodymen'
-import { create, index, show, update, destroy,addProduct } from './order.controller'
+import { create, index, show, update, destroy,addProduct,requireOrder,removeProduct } from './order.controller'
 import { basic, master, session } from '../../services/passport'
 
 import { schema,orderItemSchema } from './order.model'
@@ -78,10 +78,19 @@ router.put('/:id',
 router.delete('/:id',
   destroy)
 
-router.post('/add-product',
+router.post('/require',
+  session({required:true}),
+  requireOrder);
+
+
+router.post('/:id/products/:productId/add',
   session({required: true}),
-  body({productId,quantity}),
   addProduct
+)
+
+router.post('/:id/products/:productId/remove',
+  session({required: true}),
+  removeProduct
 )
 
 export default router
