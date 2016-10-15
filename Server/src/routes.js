@@ -5,6 +5,7 @@ import product from './api/product'
 import test from './api/test'
 import order from './api/order'
 
+const apiRouter = new Router();
 const router = new Router()
 
 /**
@@ -36,4 +37,6 @@ router.use('/products', product)
 router.use('/tests', test)
 router.use('/orders', order)
 
-export default router
+apiRouter.use('/api', router);
+
+export default apiRouter;

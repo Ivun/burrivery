@@ -2,6 +2,8 @@ import { Router } from 'express'
 import { middleware as query } from 'querymen'
 import { middleware as body } from 'bodymen'
 import { create, index, show, update, destroy,addProduct,requireOrder,removeProduct } from './order.controller'
+import {acceptOrder} from './courier/order.courier.controller'
+import {pay4Order} from './client/order.client.controller'
 import { basic, master, session } from '../../services/passport'
 
 import { schema,orderItemSchema } from './order.model'
@@ -86,11 +88,21 @@ router.post('/require',
 router.post('/:id/products/:productId/add',
   session({required: true}),
   addProduct
-)
+);
 
 router.post('/:id/products/:productId/remove',
   session({required: true}),
   removeProduct
-)
+);
+
+
+router.post('/:id/pay',
+  session({required:true, roles:['user']}),
+  pay4Order);
+
+
+router.post('/:id/accept',
+  session({required:true, roles:['courier']}),
+  acceptOrder);
 
 export default router

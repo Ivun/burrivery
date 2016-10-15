@@ -5,7 +5,7 @@ import mongooseKeywords from 'mongoose-keywords'
 import { env } from '../../config'
 
 const compare = require('bluebird').promisify(bcrypt.compare)
-const roles = ['user', 'admin']
+const roles = ['user', 'courier', 'admin']
 
 const userSchema = new Schema({
   email: {

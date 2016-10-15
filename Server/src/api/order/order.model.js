@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose'
 
-export const orderStatuses =['new','paid','assigned','ordered','shipping','delivered','cancelled']
+export const orderStatuses =['new','paid','accepted','ordered','shipping','delivered','cancelled']
 
 export const orderItemSchema = new Schema({
   quantity: {type:Number, min:0,required:true},
