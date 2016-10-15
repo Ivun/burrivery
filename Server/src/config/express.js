@@ -24,7 +24,7 @@ export default (routes) => {
   app.use(routes)
   app.use(queryErrorHandler())
   app.use(bodyErrorHandler())
-  app.use(favicon(path.join(__dirname,'../','public','favicon.ico')));
+  //app.use(favicon(path.join(__dirname,'../','public','favicon.ico')));
 
   return app
 }
