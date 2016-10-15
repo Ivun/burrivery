@@ -3,6 +3,7 @@ import user from './api/user'
 import auth from './api/auth'
 import product from './api/product'
 import test from './api/test'
+import order from './api/order'
 
 const router = new Router()
 
@@ -33,5 +34,6 @@ router.use('/users', user)
 router.use('/auth', auth)
 router.use('/products', product)
 router.use('/tests', test)
+router.use('/orders', order)
 
 export default router

@@ -45,7 +45,7 @@ const config = {
   },
   development: {
     mongo: {
-      uri: 'mongodb://localhost/server-dev',
+      uri: 'mongodb://localhost/burrivery',
       options: {
         debug: true
       }
@@ -55,7 +55,7 @@ const config = {
     ip: process.env.IP || undefined,
     port: process.env.PORT || 8080,
     mongo: {
-      uri: process.env.MONGODB_URI || 'mongodb://localhost/server'
+      uri: process.env.MONGODB_URI || 'mongodb://localhost/burrivery'
     }
   }
 }
