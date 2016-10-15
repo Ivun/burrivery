@@ -3,9 +3,11 @@ import cors from 'cors'
 import compression from 'compression'
 import morgan from 'morgan'
 import bodyParser from 'body-parser'
+import path from 'path';
 import { errorHandler as queryErrorHandler } from 'querymen'
 import { errorHandler as bodyErrorHandler } from 'bodymen'
 import { env } from './'
+import favicon from 'serve-favicon';
 
 export default (routes) => {
   const app = express()
@@ -22,6 +24,7 @@ export default (routes) => {
   app.use(routes)
   app.use(queryErrorHandler())
   app.use(bodyErrorHandler())
+  app.use(favicon(path.join(__dirname,'../','public','favicon.ico')));
 
   return app
 }
