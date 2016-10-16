@@ -25,8 +25,8 @@ export default class ClientOrders extends Component{
 
 
         function renderOrderList(){
-            return activeOrders.map((o)=>{
-                return <ClientOrderRow order={o} key={o.id}/>
+            return activeOrders.map((o, i)=>{
+                return <ClientOrderRow order={o} key={o.id} index={++i}/>
             })
         }
 

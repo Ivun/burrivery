@@ -7,7 +7,7 @@ export default class ClientOrderRow extends Component {
 
         return (
             <TouchableOpacity style={styles.container}>
-                <Text>${this._calcTotalPrice(order).toFixed(2)}</Text>
+                <Text>{this.props.index}. ${this._calcTotalPrice(order).toFixed(2)}</Text>
             </TouchableOpacity>
         );
     }
