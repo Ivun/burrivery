@@ -34,7 +34,7 @@ export default class Home extends Component {
         return (
             <ScrollView style={styles.container}>
                 <View style={styles.wannaEat}>
-                    <TouchableOpacity onPress={() => alert('load more')}>
+                    <TouchableOpacity onPress={() => this.props.navigator.push({ index: 3, productId: 3,  title: 'Add to Cart' })}>
                         <Image source={require('../images/wanna_eat.png')} style={styles.wannaEatImage} />
                     </TouchableOpacity>
                 </View>
