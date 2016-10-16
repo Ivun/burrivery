@@ -42,7 +42,7 @@ export default class BottomNavItem extends Component {
                         <Text style={styles.text}>{props.title}</Text>
                     </View>
                     <View style={styles.label}>
-                        <Text style={styles.labelText}>1</Text>
+                        <Text style={styles.labelText}>{props.count}</Text>
                     </View>
                 </TouchableOpacity>
             )

@@ -58,6 +58,12 @@ const styles = StyleSheet.create({
 });
 
 export default class Burrivery extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            count: null
+        };
+    }
 
     render() {
         const routes = [
@@ -96,7 +102,7 @@ export default class Burrivery extends Component {
                     <BottomNavItem title={"Home"} icon={require('./images/home.png')} onPress={() => alert('load more')} />
                     <BottomNavItem title={"Orders"} icon={require('./images/orders.png')} onPress={() => alert('load more')} />
                     <BottomNavItem title={"Account"} icon={require('./images/user.png')} onPress={() => alert('load more')} />
-                    <BottomNavItem title={"Checkout"} icon={require('./images/scooter.png')} onPress={() => alert('load more')} count={1} />
+                    <BottomNavItem title={"Checkout"} icon={require('./images/scooter.png')} onPress={() => alert('load more')} count={this.state.count} />
                 </View>
             </View>
         )
