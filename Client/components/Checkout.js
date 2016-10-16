@@ -50,8 +50,8 @@ export default class Checkout extends Component{
 
     renderInvoice(products){
         function renderItems(){
-            return products.map((p)=>{
-                return <Text>{p.title} --- {p.quantity} x ${p.price}</Text>
+            return products.map((p,index)=>{
+                return <Text key={index}>{p.title} --- {p.quantity} x ${p.price}</Text>
             });
         }
 
