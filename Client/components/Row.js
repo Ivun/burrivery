@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { View, Text, StyleSheet, Image, TouchableHighlight } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 export default class Row extends Component {
     _onPressButton() {
@@ -8,25 +8,43 @@ export default class Row extends Component {
 
     render() {
         const props = this.props;
-        return (
-            <View style={styles.container}>
-                <View style={styles.leftConent}>
-                    <Image source={{ uri: props.picture.large}} style={styles.photo} />
-                    <View>
-                        <Text style={styles.name}>
-                            {`${props.name.first} ${props.name.last}`}
-                        </Text>
-                        <Text style={styles.helper}>
-                            {`${props.location.city.replace(/\b\w/g, l => l.toUpperCase()) }, ${props.phone}`}
-                        </Text>
+        if (typeof props.price === 'undefined') {
+            return (
+                <TouchableOpacity style={styles.container} onPress={this._onPressButton}>
+                    <View style={styles.leftConent}>
+                        <Image source={{ uri: props.picture.thumbnail}} style={styles.photo} />
+                        <View>
+                            <Text style={styles.name}>
+                                {`${props.title}`}
+                            </Text>
+                            <Text style={styles.helper}>
+                                {`${props.subtitle}`}
+                            </Text>
+                        </View>
                     </View>
-                </View>
+                </TouchableOpacity>
+            );
+        } else {
+            return (
+                <TouchableOpacity style={styles.container} onPress={this._onPressButton}>
+                    <View style={styles.leftConent}>
+                        <Image source={{ uri: props.picture.thumbnail}} style={styles.photo} />
+                        <View>
+                            <Text style={styles.name}>
+                                {`${props.title}`}
+                            </Text>
+                            <Text style={styles.helper}>
+                                {`${props.subtitle}`}
+                            </Text>
+                        </View>
+                    </View>
 
-                <TouchableHighlight style={styles.button} onPress={this._onPressButton}>
-                    <Text>Button</Text>
-                </TouchableHighlight>
-            </View>
-        );
+                    <View style={styles.button}>
+                        <Text>{`${props.price}`}</Text>
+                    </View>
+                </TouchableOpacity>
+            );
+        }
     }
 }
 

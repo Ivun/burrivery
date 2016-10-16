@@ -3,11 +3,16 @@ import { View, Image, ScrollView, Text, ListView, StyleSheet, TouchableOpacity }
 import FCM from 'react-native-fcm';
 
 import IconThumb from './IconThumb';
+import Row from './Row';
+import data from '../data/Restaurants';
 
 export default class Home extends Component {
-    constructor(){
-        super();
-        this.state = {};
+    constructor(props){
+        super(props);
+        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+        this.state = {
+            dataSource: ds.cloneWithRows(data)
+        };
     }
     navSecond(){
         this.props.navigator.push({title: 'Senior Burrito', index: 1})
@@ -30,7 +35,7 @@ export default class Home extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
+            <ScrollView style={styles.container}>
                 <View style={styles.wannaEat}>
                     <TouchableOpacity onPress={() => alert('load more')}>
                         <Image source={require('../images/wanna_eat.png')} style={styles.wannaEatImage} />
@@ -48,10 +53,13 @@ export default class Home extends Component {
                         <IconThumb title={"Meat"} icon={require('../images/tags/meat.png')} onPress={() => alert('load more')} iconSize={ {width: 56, height: 56} } />
                     </ScrollView>
                 </View>
-                <TouchableOpacity onPress={this.navSecond.bind(this)}>
-                    <Text>Navigate to second screen</Text>
-                </TouchableOpacity>
-            </View>
+                <View style={{paddingBottom: 56 }}>
+                    <ListView
+                        dataSource={this.state.dataSource}
+                        renderRow={(data) => <Row {...data} />}
+                    />
+                </View>
+            </ScrollView>
 
         )
     }
@@ -63,7 +71,7 @@ const styles = StyleSheet.create({
     },
     wannaEat: {
         height: 90,
-        backgroundColor: '#4d9335',
+        backgroundColor: '#DF7845',
         flex: 1,
         alignItems: 'center',
         justifyContent: 'flex-start',
@@ -74,6 +82,6 @@ const styles = StyleSheet.create({
     },
     horizontal: {
         padding: 0,
-    }
+    },
 });
 

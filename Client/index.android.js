@@ -46,6 +46,9 @@ const styles = StyleSheet.create({
         borderTopWidth: StyleSheet.hairlineWidth,
         borderTopColor: '#333'
     },
+    home: {
+        paddingBottom: 0,
+    }
 });
 
 export default class Burrivery extends Component {
@@ -64,7 +67,7 @@ export default class Burrivery extends Component {
                     renderScene={function(route, navigator) {
                         switch (route.index) {
                             case 0:
-                                return (<Home navigator={navigator} />);
+                                return (<Home navigator={navigator}  style={styles.home}/>);
                             case 1:
                                 return (<MyScene title={'Salads'} data={require('./components/Data')} />)
                         }
