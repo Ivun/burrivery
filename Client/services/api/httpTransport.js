@@ -11,10 +11,7 @@ class HttpTransport {
 
         url = this._addParamsToUrl(url, params);
 
-        alert(url);
-
         return fetch(url, options).then(resp=>{
-            //alert(resp.text());
             return resp.json();
         });
     }

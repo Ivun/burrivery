@@ -55,6 +55,7 @@ export const addProduct = ({params, body }, res, next) => {
 
       return order.save();
     })
+    .then(res.view())
     .then(success(res, 201))
     .catch(next);
 }
@@ -77,6 +78,7 @@ export const removeProduct = ({params, body }, res, next) => {
 
       return order.save();
     })
+    .then(res.view())
     .then(success(res, 201))
     .catch(next);
 }
@@ -84,6 +86,7 @@ export const removeProduct = ({params, body }, res, next) => {
 export const requireOrder = ({user}, res, next) => {
   return ensureOrder(user._id)
     .then(notFound(res))
+    .then(res.view())
     .then(success(res, 201))
     .catch(next);
 }

@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { View, ScrollView, Text, ListView, StyleSheet } from 'react-native';
 
+import ProductList from './ProductList';
 import Row from './Row';
 
 const styles = StyleSheet.create({
@@ -41,11 +42,7 @@ export default class MyScene extends Component {
                 <View style={styles.title}>
                     <Text style={styles.titleText}>{props.title}</Text>
                 </View>
-                <ListView
-                    style={styles.container}
-                    dataSource={this.state.dataSource}
-                    renderRow={(data) => <Row {...data} />}
-                />
+                <ProductList/>
             </ScrollView>
 
         )
