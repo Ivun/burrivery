@@ -33,7 +33,6 @@ export default class ProductList extends Component {
 
     _addToCart(id, quantity){
         OrdersApiClient.ensure().then((order)=>{
-            alert(order.id);
             OrdersApiClient.add(order.id, id, quantity);
         })
     }

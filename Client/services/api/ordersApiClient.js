@@ -6,7 +6,7 @@ class OrdersApiClient extends BaseApiClient{
     }
 
     add(orderId, productId, quantity){
-        return super.post(`orders/${id}/products/${productId}/add`, {quantity});
+        return super.post(`orders/${orderId}/products/${productId}/add`, {quantity});
     }
 }
 

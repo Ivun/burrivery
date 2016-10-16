@@ -14,7 +14,9 @@ class BaseApiClient{
                 res({
                     url: this.apiUrl + '/' + url,
                     headers:{
-                        'Authorization':`Bearer ${bearer}`
+                        'Authorization':`Bearer ${bearer}`,
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
                     }
                 });
             });
