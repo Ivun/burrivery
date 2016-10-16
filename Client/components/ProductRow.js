@@ -1,12 +1,19 @@
 import React, { Component, PropTypes } from 'react';
-import { View, Text, StyleSheet, Image, TouchableHighlight } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 export default class ProductRow extends Component {
+    _navigate(title, id){
+        this.props.navigator.push({
+            index: 3,
+            productId:id
+        })
+    }
+
     render() {
         const { imageSrc, id, title, subtitle, price, onAdded, phone } = this.props;
 
         return (
-            <View style={styles.container}>
+            <TouchableOpacity style={styles.container} onPress={ () => this._navigate(title,id) }>
                 <View style={styles.leftContent}>
                     <Image source={{ uri: imageSrc }} style={styles.photo} />
                     <View>
@@ -18,11 +25,7 @@ export default class ProductRow extends Component {
                         </Text>
                     </View>
                 </View>
-
-                <TouchableHighlight style={styles.button} onPress={()=>onAdded(id,1)}>
-                    <Text>${price}</Text>
-                </TouchableHighlight>
-            </View>
+            </TouchableOpacity>
         );
     }
 }

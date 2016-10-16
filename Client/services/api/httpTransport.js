@@ -18,13 +18,18 @@ class HttpTransport {
 
     post(url, data, options){
         options = {...this.defaultOptions, ...options,
-            body: data,
-            method: 'POST'
+            body: JSON.stringify(data),
+            method: 'post'
+        };
+
+
+        options.headers = {...options.headers,
+
         };
 
         return fetch(url, options).then(resp=>{
             return resp.json();
-        });
+        }).catch(err=>alert(err));
     }
 
     _addParamsToUrl(url, paramsObj){

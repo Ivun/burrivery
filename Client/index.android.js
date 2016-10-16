@@ -4,7 +4,7 @@ import {AppRegistry, Navigator, StyleSheet, Text, View, TouchableOpacity} from '
 import Home from './components/Home';
 import MyScene from './components/TestScene';
 import Category from './components/Category';
-
+import ProductDetail from './components/ProductDetail'
 
 import categories from './data/Categories';
 
@@ -71,6 +71,8 @@ export default class Burrivery extends Component {
             {title: 'Categories', index: 1},
             {title: 'Products', index: 2},
             {title: 'Add to Cart', index: 3},
+            {title: 'Checkout', index: 4},
+            {title: 'Orders', index: 5},
         ];
         return (
             <View style={{ flex: 1, }}>
@@ -82,11 +84,13 @@ export default class Burrivery extends Component {
                             case 0:
                                 return (<Home navigator={navigator}  style={styles.home}/>);
                             case 1:
-                                return (<MyScene title={'Salads'} data={require('./data/Categories')} />)
+                                return (<Category navigator={navigator}  title={'Kuku'} data={categories} />)
                             case 2:
-                                return (<Category title={'Kuku'} data={categories} />)
+                                return (<MyScene navigator={navigator} title={'Salads'} data={require('./components/Data')}/>)
                             case 3:
-                                return (<MyScene title={'Salads'} data={require('./components/Data')} />)
+                                return (<ProductDetail navigator={navigator} title={'Salads'} data={require('./components/Data')} productId={route.productId}/>)
+                            case 4:
+                                return (<ProductDetail navigator={navigator} title={'Salads'} data={require('./components/Data')} productId={route.productId}/>)
                         }
                     }}
                     navigationBar={

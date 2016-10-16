@@ -24,24 +24,24 @@ export default class ProductList extends Component {
         const props = this.props;
         return (
                 <ListView
+                    enableEmptySections={true}
                     style={styles.container}
                     dataSource={this.state.dataSource}
-                    renderRow={(data) => <ProductRow {...data} onAdded={this._addToCart.bind(this)}/>}
+                    renderRow={(data) => <ProductRow {...data} navigator={props.navigator}/>}
                 />
         )
     }
 
     _addToCart(id, quantity){
         OrdersApiClient.ensure().then((order)=>{
-            alert(order.id);
-            OrdersApiClient.add(order.id, id, quantity);
-        })
+            return OrdersApiClient.add(order.id, id, quantity);
+        }).catch(()=>{});
     }
 
     _loadProducts(){
         ProductsApiClient.list().then(items=>{
             this.setState({dataSource: this.ds.cloneWithRows(items)});
-        })
+        }).catch(()=>{});
     }
 }
 

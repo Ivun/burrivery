@@ -44,7 +44,7 @@ export default class Category extends Component {
                 <ListView
                     style={styles.container}
                     dataSource={this.state.dataSource}
-                    renderRow={(data) => <Row {...data} />}
+                    renderRow={(data) => <Row {...data} navigator={props.navigator} product={true}/>}
                 />
             </ScrollView>
 

@@ -42,7 +42,7 @@ export default class MyScene extends Component {
                 <View style={styles.title}>
                     <Text style={styles.titleText}>{props.title}</Text>
                 </View>
-                <ProductList/>
+                <ProductList navigator={props.navigator}/>
             </ScrollView>
 
         )
