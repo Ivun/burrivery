@@ -28,13 +28,7 @@ const styles = StyleSheet.create({
 
 
 export default class MyScene extends Component {
-    constructor(props) {
-        super(props);
-        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-        this.state = {
-            dataSource: ds.cloneWithRows(data)
-        };
-    }
+
 
     render() {
         const props = this.props;
