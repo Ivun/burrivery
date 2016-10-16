@@ -72,7 +72,7 @@ export default class Checkout extends Component{
 
     checkout(){
         OrdersApiClient.pay(this.state.order.id).then(()=>{
-            alert("Your order was accepted")
+            this.props.navigator.push({index:5,title:'Orders'});
         })
     }
 }
