@@ -5,6 +5,7 @@ import Home from './components/Home';
 import MyScene from './components/TestScene';
 import Category from './components/Category';
 import ProductDetail from './components/ProductDetail'
+import Checkout from './components/Checkout'
 
 import categories from './data/Categories';
 
@@ -74,25 +75,27 @@ export default class Burrivery extends Component {
             {title: 'Checkout', index: 4},
             {title: 'Orders', index: 5},
         ];
+
+        var self = this;
+
         return (
             <View style={{ flex: 1, }}>
                 <Navigator
                     initialRoute={routes[0]}
                     initialRouteStack={routes}
                     renderScene={function(route, navigator) {
-                        switch (route.index) {
-                            case 0:
-                                return (<Home navigator={navigator}  style={styles.home}/>);
-                            case 1:
-                                return (<Category navigator={navigator}  title={'Kuku'} data={categories} />)
-                            case 2:
-                                return (<MyScene navigator={navigator} title={'Salads'} data={require('./components/Data')}/>)
-                            case 3:
-                                return (<ProductDetail navigator={navigator} title={'Salads'} data={require('./components/Data')} productId={route.productId}/>)
-                            case 4:
-                                return (<ProductDetail navigator={navigator} title={'Salads'} data={require('./components/Data')} productId={route.productId}/>)
-                        }
-                    }}
+                    return (
+                        <View style={{ flex: 1, }}>
+                            {this.renderRouteScene(route,navigator)}
+                            <View style={styles.bottomNav}>
+                                <BottomNavItem title={"Home"} icon={require('./images/home.png')} onPress={() => alert('load more')} />
+                                <BottomNavItem title={"Orders"} icon={require('./images/orders.png')} onPress={() => alert('load more')} />
+                                <BottomNavItem title={"Account"} icon={require('./images/user.png')} onPress={() => alert('load more')} />
+                                <BottomNavItem title={"Checkout"} icon={require('./images/scooter.png')} onPress={() => navigator.push({index:4,title:'checkout'})} count={this.state.count} />
+                            </View>
+                        </View>)
+
+                    }.bind(this)}
                     navigationBar={
                         <Navigator.NavigationBar
                             routeMapper={NavigationBarRouteMapper}
@@ -102,14 +105,24 @@ export default class Burrivery extends Component {
                     configureScene={(route, routeStack) =>
                         Navigator.SceneConfigs.PushFromRight}
                 />
-                <View style={styles.bottomNav}>
-                    <BottomNavItem title={"Home"} icon={require('./images/home.png')} onPress={() => alert('load more')} />
-                    <BottomNavItem title={"Orders"} icon={require('./images/orders.png')} onPress={() => alert('load more')} />
-                    <BottomNavItem title={"Account"} icon={require('./images/user.png')} onPress={() => alert('load more')} />
-                    <BottomNavItem title={"Checkout"} icon={require('./images/scooter.png')} onPress={() => alert('load more')} count={this.state.count} />
-                </View>
+
             </View>
         )
+    }
+
+    renderRouteScene(route, navigator){
+        switch (route.index) {
+            case 0:
+                return (<Home navigator={navigator}  style={styles.home}/>);
+            case 1:
+                return (<Category navigator={navigator}  title={'Kuku'} data={categories} />)
+            case 2:
+                return (<MyScene navigator={navigator} title={'Salads'} data={require('./components/Data')}/>)
+            case 3:
+                return (<ProductDetail navigator={navigator} title={'Salads'} data={require('./components/Data')} productId={route.productId}/>)
+            case 4:
+                return (<Checkout navigator={navigator} title={'Salads'} data={require('./components/Data')}/>)
+        }
     }
 }
 

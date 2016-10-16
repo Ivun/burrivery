@@ -49,14 +49,18 @@ export default class ProductDetail extends Component{
                 return null;
             }
 
+            if (this._getCurrentOrderQuantity() == 0){
+                return <Text>Add to the cart</Text>
+            }
+
+            if (this.state.quantity == 0){
+                return <Text>Remove from the cart</Text>
+            }
+
             if (this._getCurrentOrderQuantity() < this.state.quantity){
                 return <Text>Add additional {this.state.quantity - this._getCurrentOrderQuantity()} to the cart</Text>
             }else{
-                if (this.state.quantity == 0){
-                    return <Text>Remove from the cart</Text>
-                }else{
-                    return <Text>Remove {this._getCurrentOrderQuantity()-this.state.quantity} from the cart</Text>
-                }
+                return <Text>Remove {this._getCurrentOrderQuantity()-this.state.quantity} from the cart</Text>
             }
     }
 
@@ -95,7 +99,7 @@ export default class ProductDetail extends Component{
     }
 
     _getOrderItem(order, productId){
-        if (!order) return null;
+        if (!order || !order.items) return null;
         return order.items.find(x=>x.productId == productId);
     }
 
