@@ -54,5 +54,33 @@ export default data = [
         "picture": {
             "thumbnail": "http://www.burrivery.com/assets/restraurants/rest_3.png",
         },
+    },
+    {
+        "title": "Pizza storia",
+        "subtitle": "$$, pizza, sushi",
+        "picture": {
+            "thumbnail": "http://www.burrivery.com/assets/restraurants/rest_5.png",
+        }
+    },
+    {
+        "title": "Шашлык N1",
+        "subtitle": "$$$, kebap, steak",
+        "picture": {
+            "thumbnail": "http://www.burrivery.com/assets/restraurants/rest_6.png",
+        }
+    },
+    {
+        "title": "Ресто Место",
+        "subtitle": "$$$, russian, healthy",
+        "picture": {
+            "thumbnail": "http://www.burrivery.com/assets/restraurants/rest_7.png",
+        }
+    },
+    {
+        "title": "ГлавПирог",
+        "subtitle": "$, fastfood, russian",
+        "picture": {
+            "thumbnail": "http://www.burrivery.com/assets/restraurants/rest_11.png",
+        }
     }
 ];
