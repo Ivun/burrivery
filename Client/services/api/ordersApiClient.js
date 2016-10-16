@@ -12,6 +12,14 @@ class OrdersApiClient extends BaseApiClient{
     remove(orderId, productId, quantity){
         return super.post(`orders/${orderId}/products/${productId}/remove`, {quantity});
     }
+
+    pay(orderId){
+        return super.post(`orders/${orderId}/pay`);
+    }
+
+    active(){
+        return super.get('orders/active');
+    }
 }
 
 export default new OrdersApiClient();

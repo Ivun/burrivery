@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { middleware as query } from 'querymen'
 import { middleware as body } from 'bodymen'
-import { create, index, show, update, destroy,addProduct,requireOrder,removeProduct } from './order.controller'
+import { create, index, show, update, destroy,addProduct,requireOrder,removeProduct,activeOrders } from './order.controller'
 import {acceptOrder} from './courier/order.courier.controller'
 import {pay4Order} from './client/order.client.controller'
 import { basic, master, session } from '../../services/passport'
@@ -42,6 +42,10 @@ router.post('/',
 router.get('/',
   query(),
   index)
+
+router.get('/active',
+  session({required:true}),
+  activeOrders)
 
 /**
  * @api {get} /orders/:id Retrieve order
