@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {AppRegistry, Navigator, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {AppRegistry, Navigator, StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 
 import Home from './components/Home';
 import MyScene from './components/TestScene';
@@ -14,7 +14,7 @@ import BottomNavItem from './components/BottomNavItem';
 
 const styles = StyleSheet.create({
     navBar: {
-        backgroundColor: '#fff',
+        backgroundColor: '#eee',
         flex: 1,
     },
     navBarText: {
@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
     },
     navBarLeftButton: {
         paddingLeft: 10,
+        marginVertical: 3,
     },
     navBarRightButton: {
         paddingRight: 10,
@@ -125,7 +126,7 @@ const NavigationBarRouteMapper = {
                     onPress={() => navigator.pop()}
                     style={styles.navBarLeftButton}>
                     <Text style={[styles.navBarText, styles.navBarButtonText]}>
-                        {previousRoute.title}
+                        <Image source={require('./images/left-arrow-angle.png')} style={{ width: 16, height: 16 }} />
                     </Text>
                 </TouchableOpacity>
             );

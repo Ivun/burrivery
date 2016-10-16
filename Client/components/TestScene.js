@@ -7,6 +7,7 @@ import Row from './Row';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        paddingTop: 56,
         paddingBottom: 56,
         backgroundColor: '#fff',
     },
@@ -38,10 +39,10 @@ export default class MyScene extends Component {
     render() {
         const props = this.props;
         return (
-            <ScrollView>
-                <View style={styles.title}>
-                    <Text style={styles.titleText}>{props.title}</Text>
-                </View>
+            <ScrollView style={styles.container}>
+                {/*<View style={styles.title}>*/}
+                    {/*<Text style={styles.titleText}>{props.title}</Text>*/}
+                {/*</View>*/}
                 <ProductList navigator={props.navigator}/>
             </ScrollView>
 

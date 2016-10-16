@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { View, Text, StyleSheet, Image, TouchableHighlight, ListView,ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, ListView,ScrollView } from 'react-native';
 import ProductRow from './ProductRow';
 
 import ProductsApiClient from '../services/api/productsApiClient'
@@ -30,17 +30,29 @@ export default class ProductDetail extends Component{
         if (!product) return null;
 
         return (
-            <ScrollView style={styles.container}>
-                <View>
-                    <Text>{this.state.product.title} - ${this.state.product.price}</Text>
+            <View style={styles.wrap}>
+                <View style={styles.container}>
+                    <Text style={styles.title}>{this.state.product.title} - ${this.state.product.price}</Text>
                     <Text>{this.state.product.subtitle}</Text>
-                    <Text onPress={this._quantityDecr.bind(this)}>-</Text>
-                    <Text>{this.state.quantity}</Text>
-                    <Text onPress={this._quantityIncr.bind(this)}>+</Text>
-                    <Text onPress={this._update.bind(this)}>{this.renderCartButton()}</Text>
-                </View>
+                    <View style={styles.counter}>
+                        <TouchableOpacity onPress={this._quantityDecr.bind(this)} style={styles.button}>
+                            <Text style={styles.buttonText}>-</Text>
+                        </TouchableOpacity>
+                        <Text>{this.state.quantity}</Text>
+                        <TouchableOpacity onPress={this._quantityIncr.bind(this)} style={styles.button}>
+                            <Text style={styles.buttonText}>+</Text>
+                        </TouchableOpacity>
+                    </View>
+                    {
+                        this.renderCartButton() !== null ?
+                        <TouchableOpacity onPress={this._update.bind(this)} style={styles.remove}>
+                            <Text style={styles.removeText}>{this.renderCartButton()}</Text>
+                        </TouchableOpacity> : null
+                    }
 
-            </ScrollView>
+                </View>
+            </View>
+
         );
     }
 
@@ -109,8 +121,46 @@ export default class ProductDetail extends Component{
 }
 
 const styles = StyleSheet.create({
-    container: {
-        paddingTop: 56,
+    wrap: {
+        flex: 1,
+        justifyContent: 'flex-start',
+        paddingBottom: 56,
         backgroundColor: '#fff',
-    }
+    },
+    container: {
+        paddingTop: 76,
+        paddingLeft: 20,
+        paddingRight: 20,
+    },
+    title: {
+      fontSize: 24,
+    },
+    counter: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingTop: 10,
+        paddingBottom: 10,
+    },
+    button: {
+        width: 32,
+        height: 32,
+        backgroundColor: '#eee',
+        borderRadius: 16,
+    },
+    buttonText: {
+        textAlign: 'center',
+        lineHeight: 25,
+    },
+    remove: {
+        padding: 10,
+        backgroundColor: 'orange',
+        marginTop: 10,
+        marginBottom: 10,
+    },
+    removeText: {
+        color: '#fff',
+        textAlign: 'center',
+        fontSize: 18,
+    },
 });
