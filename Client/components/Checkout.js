@@ -57,7 +57,7 @@ export default class Checkout extends Component{
 
         const totalSum = products.reduce((a,b)=>{
             return a+b.quantity*b.price;
-        },0);
+        },0).toFixed(2);
 
         return (
             <View>
@@ -65,7 +65,7 @@ export default class Checkout extends Component{
                     {renderItems()}
                 </View>
                 <View>
-                    <Text>Summary: ${totalSum} 12</Text>
+                    <Text>Summary: ${totalSum}</Text>
                  </View>
             </View>
         );
