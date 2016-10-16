@@ -12,6 +12,18 @@ export default categories = [
         "price": "from $10.00",
     },
     {
+        "title": "Salads",
+        "price": "from $1.50",
+    },
+    {
+        "title": "Vegetarian",
+        "price": "from $19.95",
+    },
+    {
+        "title": "Deserts",
+        "price": "from $0.95",
+    },
+    {
         "title": "Beverages: alcoholic",
         "price": "from $3.95",
     },
