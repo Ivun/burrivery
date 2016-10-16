@@ -27,6 +27,9 @@ const config = {
     ip: process.env.IP || 'localhost',
     masterKey: requireProcessEnv('MASTER_KEY'),
     jwtSecret: requireProcessEnv('JWT_SECRET'),
+    firebase:{
+      cmApiKey: process.env.FIREBASE_API_KEY
+    },
     mongo: {
       options: {
         db: {

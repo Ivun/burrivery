@@ -3,7 +3,7 @@ import {AppRegistry, NavigatorIOS, Text, View} from 'react-native';
 
 import MyScene from './components/TestScene';
 
-export default class Client extends Component {
+export default class Burrivery extends Component {
     render() {
         return (
             <MyScene />
@@ -12,4 +12,4 @@ export default class Client extends Component {
 }
 
 
-AppRegistry.registerComponent('Client', () => Client);
+AppRegistry.registerComponent('Burrivery', () => Burrivery);

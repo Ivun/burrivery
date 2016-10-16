@@ -78,6 +78,7 @@
     "cors": "^2.7.1",
     "crypto": "0.0.3",
     "express": "^4.13.4",
+    "fcm-node": "^1.0.15",
     "jsonwebtoken": "^7.1.9",
     "lodash": "^4.13.1",
     "mongoose": "^4.4.19",

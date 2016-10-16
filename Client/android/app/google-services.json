@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "685487444005",
+    "firebase_url": "https://burrivery.firebaseio.com",
+    "project_id": "burrivery",
+    "storage_bucket": "burrivery.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:685487444005:android:00b9fe35ccd22361",
+        "android_client_info": {
+          "package_name": "com.burrivery.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "685487444005-1smgrq73ff6kasgk6dh3naimh7pceql6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3Bv3_ZAAAMWTtjgTVv-sh1pSkHWkrcvs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

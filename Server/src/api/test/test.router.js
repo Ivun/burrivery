@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { middleware as query } from 'querymen'
 import { middleware as body } from 'bodymen'
-import { create, index, show, update, destroy } from './test.controller'
+import { create, index, show, update, destroy,sendNotification } from './test.controller'
 import { schema } from './test.model'
 export Test, { schema } from './test.model'
 
@@ -67,6 +67,9 @@ router.put('/:id',
  * @apiError 404 Test not found.
  */
 router.delete('/:id',
-  destroy)
+  destroy);
+
+router.post('/send',
+  sendNotification);
 
 export default router
