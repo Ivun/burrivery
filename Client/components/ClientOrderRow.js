@@ -3,24 +3,20 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 export default class ClientOrderRow extends Component {
     render() {
-        const { imageSrc, id, title, subtitle, price, onAdded, phone } = this.props;
+        const { order } = this.props;
 
         return (
             <TouchableOpacity style={styles.container}>
-                <View style={styles.leftContent}>
-                    <Image source={{ uri: imageSrc }} style={styles.photo} />
-                    <View>
-                        <Text style={styles.name}>
-                            {`${title} ${subtitle}`}
-                        </Text>
-                        <Text style={styles.helper}>
-                            {phone}
-                        </Text>
-                    </View>
-                </View>
+                <Text>${this._calcTotalPrice(order).toFixed(2))}</Text>
             </TouchableOpacity>
         );
     }
+
+    _calcTotalPrice(order) {
+                        return order.items.reduce((prev, cur)=> {
+                        return prev + cur.price * cur.quantity;
+                    }, 0);
+                    }
 }
 
 const styles = StyleSheet.create({
