@@ -71,6 +71,8 @@ export default class Burrivery extends Component {
             {title: 'Categories', index: 1},
             {title: 'Products', index: 2},
             {title: 'Add to Cart', index: 3},
+            {title: 'Checkout', index: 4},
+            {title: 'Orders', index: 5},
         ];
         return (
             <View style={{ flex: 1, }}>
