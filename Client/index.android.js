@@ -56,19 +56,25 @@ export default class Burrivery extends Component {
     render() {
         const routes = [
             {title: 'Home', index: 0},
-            {title: 'Senior Burrito', index: 1},
+            {title: 'Categories', index: 1},
+            {title: 'Products', index: 2},
+            {title: 'Add to Cart', index: 3},
         ];
 
         return (
             <View style={{ flex: 1, }}>
                 <Navigator
-                    initialRoute={routes[1]}
+                    initialRoute={routes[0]}
                     initialRouteStack={routes}
                     renderScene={function(route, navigator) {
                         switch (route.index) {
                             case 0:
                                 return (<Home navigator={navigator}  style={styles.home}/>);
                             case 1:
+                                return (<MyScene title={'Salads'} data={require('./components/Data')} />)
+                            case 2:
+                                return (<MyScene title={'Salads'} data={require('./components/Data')} />)
+                            case 3:
                                 return (<MyScene title={'Salads'} data={require('./components/Data')} />)
                         }
                     }}
