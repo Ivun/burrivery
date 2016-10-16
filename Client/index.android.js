@@ -4,6 +4,8 @@ import {AppRegistry, Navigator, StyleSheet, Text, View, TouchableOpacity} from '
 import Home from './components/Home';
 import MyScene from './components/TestScene';
 
+import BottomNavItem from './components/BottomNavItem';
+
 const styles = StyleSheet.create({
     navBar: {
         backgroundColor: '#fff',
@@ -26,6 +28,24 @@ const styles = StyleSheet.create({
     navBarButtonText: {
         color: 'blue',
     },
+    bottomNav: {
+        height: 54,
+        flex: 1,
+        alignItems: 'center',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingLeft: 30,
+        paddingRight: 30,
+        paddingTop: 8,
+        paddingBottom: 0,
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        backgroundColor: '#fff',
+        borderTopWidth: StyleSheet.hairlineWidth,
+        borderTopColor: '#333'
+    },
 });
 
 export default class Burrivery extends Component {
@@ -46,7 +66,7 @@ export default class Burrivery extends Component {
                             case 0:
                                 return (<Home navigator={navigator} />);
                             case 1:
-                                return (<MyScene />)
+                                return (<MyScene title={'Salads'} data={require('./components/Data')} />)
                         }
                     }}
                     navigationBar={
@@ -58,6 +78,12 @@ export default class Burrivery extends Component {
                     configureScene={(route, routeStack) =>
                         Navigator.SceneConfigs.PushFromRight}
                 />
+                <View style={styles.bottomNav}>
+                    <BottomNavItem title={"Home"} icon={require('./images/home.png')} onPress={() => alert('load more')} />
+                    <BottomNavItem title={"Orders"} icon={require('./images/orders.png')} onPress={() => alert('load more')} />
+                    <BottomNavItem title={"Account"} icon={require('./images/user.png')} onPress={() => alert('load more')} />
+                    <BottomNavItem title={"Checkout"} icon={require('./images/scooter.png')} onPress={() => alert('load more')} count={1} />
+                </View>
             </View>
         )
     }
