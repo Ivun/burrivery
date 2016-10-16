@@ -4,7 +4,8 @@ export const orderStatuses =['new','paid','accepted','ordered','shipping','deliv
 
 export const orderItemSchema = new Schema({
   quantity: {type:Number, min:0,required:true},
-  productId: {type:Schema.ObjectId, required: true}
+  productId: {type:Schema.ObjectId, required: true},
+  price:{type:Number, required: true}
 })
 
 const orderSchema = new Schema({

@@ -1,6 +1,7 @@
 import _ from 'lodash'
 import { success, notFound } from '../../services/response/'
 import { Order } from '.'
+import { Product } from '../product/product.model'
 import {orderCreate, orderItemSchema} from './order.model';
 
 export const create = (req, res, next) =>
@@ -56,10 +57,11 @@ export const addProduct = ({params, body }, res, next) => {
       if (existingProduct){
         existingProduct.quantity += quantity;
       }else{
-        order.items.push({productId: productId, quantity: quantity});
+        return Product.findById(productId).then((p)=>{
+          order.items.push({productId: productId, quantity: quantity, price: p.price});
+          return order.save();
+        })
       }
-
-      return order.save();
     })
     .then(order=>order?order.view():null)
     .then(success(res, 201))
