@@ -18,7 +18,7 @@ export const index = ({ querymen: { query, select, cursor } }, res, next) =>
     .catch(next)
 
 export const activeOrders = ({ user }, res, next) =>
-  Order.find({status:{$in:['paid','accepted','ordered','shipping']}})
+  Order.find({status:{$in:['paid','accepted','ordered','shipping']}},null,{sort:{updatedAt:-1}})
     .then((orders) => orders.map((order) => order.view()))
     .then(success(res))
     .catch(next)

@@ -13,9 +13,15 @@ export default class ClientOrders extends Component{
     }
 
     componentDidMount(){
-        OrdersApiClient.active().then((orders)=>{
-            this.setState({...this.state, activeOrders:orders});
-        });
+        this.interval = setInterval(()=>{
+            this._reloadOrders();
+        },1000);
+
+        this._reloadOrders();
+    }
+
+    componentWillUnmount(){
+        clearInterval(this.interval);
     }
 
     render() {
@@ -38,6 +44,13 @@ export default class ClientOrders extends Component{
             </ScrollView>
         );
     }
+
+    _reloadOrders(){
+        OrdersApiClient.active().then((orders)=>{
+            this.setState({...this.state, activeOrders:orders});
+        });
+    }
+
 }
 
 const styles = StyleSheet.create({

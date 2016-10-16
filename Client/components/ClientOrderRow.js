@@ -1,16 +1,29 @@
 import React, { Component, PropTypes } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
+import moment from 'moment';
+
 export default class ClientOrderRow extends Component {
     render() {
         const { order } = this.props;
+        const status = this._getHackStatus(order);
 
         return (
             <TouchableOpacity style={styles.container}>
                 <Text>{this.props.index}. ${this._calcTotalPrice(order).toFixed(2)}</Text>
+                <Text>{status}</Text>
             </TouchableOpacity>
         );
     }
+
+    _getHackStatus(order){
+        if (moment(order.updatedAt).add(30, 'seconds').isBefore(moment())){
+            order.status = 'accepted';
+        }
+
+        return order.status;
+    }
+
 
     _calcTotalPrice(order) {
                         return order.items.reduce((prev, cur)=> {
