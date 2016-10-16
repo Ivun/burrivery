@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     },
 });
 
-export default class Client extends Component {
+export default class Burrivery extends Component {
 
     render() {
         const routes = [
@@ -106,4 +106,4 @@ const NavigationBarRouteMapper = {
 
 };
 
-AppRegistry.registerComponent('Client', () => Client);
+AppRegistry.registerComponent('Burrivery', () => Burrivery);
