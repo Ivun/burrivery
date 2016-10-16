@@ -1,6 +1,7 @@
 import _ from 'lodash'
 import { success, notFound } from '../../services/response/'
 import { Test } from '.'
+import {firebaseCloudMessager} from '../../services/firebase'
 
 export const create = ({ bodymen: { body } }, res, next) =>
   Test.create(body)
@@ -35,3 +36,8 @@ export const destroy = ({ params }, res, next) =>
     .then((test) => test ? test.remove() : null)
     .then(success(res, 204))
     .catch(next)
+
+export const sendNotification = ({params:{token,title,body}}, res, next) => {
+  firebaseCloudMessager.sendMessage(token, title, body)
+  return Promise.resolve('notification request has been sent').then(success(res));
+}

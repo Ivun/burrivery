@@ -1,5 +1,5 @@
 {
-  "name": "Client",
+  "name": "Burrivery",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -8,7 +8,8 @@
   },
   "dependencies": {
     "react": "15.3.2",
-    "react-native": "0.35.0"
+    "react-native": "0.35.0",
+    "react-native-fcm": "^2.3.2"
   },
   "jest": {
     "preset": "jest-react-native"
