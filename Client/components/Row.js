@@ -11,43 +11,34 @@ export default class Row extends Component {
 
     render() {
         const props = this.props;
-        if (typeof props.price === 'undefined') {
-            return (
-                <TouchableOpacity style={styles.container} onPress={ () => this._navigate(props.title) }>
-                    <View style={styles.leftConent}>
-                        <Image source={{ uri: props.picture.thumbnail}} style={styles.photo} />
-                        <View>
-                            <Text style={styles.name}>
-                                {`${props.title}`}
-                            </Text>
-                            <Text style={styles.helper}>
-                                {`${props.subtitle}`}
-                            </Text>
-                        </View>
-                    </View>
-                </TouchableOpacity>
-            );
-        } else {
-            return (
-                <TouchableOpacity style={styles.container} onPress={ () => this._navigate() } >
-                    <View style={styles.leftConent}>
-                        <Image source={{ uri: props.picture.thumbnail}} style={styles.photo} />
-                        <View>
-                            <Text style={styles.name}>
-                                {`${props.title}`}
-                            </Text>
-                            <Text style={styles.helper}>
-                                {`${props.subtitle}`}
-                            </Text>
-                        </View>
-                    </View>
 
+        return (
+            <TouchableOpacity style={styles.container} onPress={ () => this._navigate(props.title) } >
+                <View style={styles.leftConent}>
+                    { typeof props.picture !== 'undefined' ?
+                        <Image source={{ uri: props.picture.thumbnail}} style={styles.photo} /> : null
+                    }
+                    <View>
+                        <Text style={styles.name}>
+                            {`${props.title}`}
+                        </Text>
+                        { typeof props.subtitle !== 'undefined' ?
+                            <Text style={styles.helper}>
+                                {`${props.subtitle}`}
+                            </Text> : null
+                        }
+
+                    </View>
+                </View>
+                { typeof props.price !== 'undefined' ?
                     <View style={styles.button}>
                         <Text>{`${props.price}`}</Text>
-                    </View>
-                </TouchableOpacity>
-            );
-        }
+                    </View> : null
+                }
+
+            </TouchableOpacity>
+        );
+
     }
 }
 

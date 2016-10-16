@@ -3,6 +3,12 @@ import {AppRegistry, Navigator, StyleSheet, Text, View, TouchableOpacity} from '
 
 import Home from './components/Home';
 import MyScene from './components/TestScene';
+import Category from './components/Category';
+
+
+import categories from './data/Categories';
+
+
 
 import BottomNavItem from './components/BottomNavItem';
 
@@ -60,7 +66,6 @@ export default class Burrivery extends Component {
             {title: 'Products', index: 2},
             {title: 'Add to Cart', index: 3},
         ];
-
         return (
             <View style={{ flex: 1, }}>
                 <Navigator
@@ -71,9 +76,9 @@ export default class Burrivery extends Component {
                             case 0:
                                 return (<Home navigator={navigator}  style={styles.home}/>);
                             case 1:
-                                return (<MyScene title={'Salads'} data={require('./components/Data')} />)
+                                return (<MyScene title={'Salads'} data={require('./data/Categories')} />)
                             case 2:
-                                return (<MyScene title={'Kuku'} data={require('./components/Data')} />)
+                                return (<Category title={'Kuku'} data={categories} />)
                             case 3:
                                 return (<MyScene title={'Salads'} data={require('./components/Data')} />)
                         }
@@ -102,15 +107,7 @@ const NavigationBarRouteMapper = {
 
     LeftButton: function(route, navigator, index, navState) {
         if (index === 0) {
-            return (
-                <TouchableOpacity
-                    onPress={() => alert('hooi!111')}
-                    style={styles.navBarLeftButton}>
-                    <Text style={[styles.navBarText, styles.navBarButtonText]}>
-                        X
-                    </Text>
-                </TouchableOpacity>
-            )
+            return null;
         } else {
             const previousRoute = navState.routeStack[index - 1];
             return (
@@ -132,11 +129,20 @@ const NavigationBarRouteMapper = {
     },
 
     Title: function(route, navigator, index, navState) {
-        return (
-            <Text style={[styles.navBarText, styles.navBarTitleText]}>
-                {route.title} [{index}]
-            </Text>
-        );
+        if (index === 0 ) {
+            return (
+                <Text style={[styles.navBarText, styles.navBarTitleText]}>
+                    Burrivery
+                </Text>
+            )
+
+        } else {
+            return (
+                <Text style={[styles.navBarText, styles.navBarTitleText]}>
+                    {route.title}
+                </Text>
+            );
+        }
     },
 
 };

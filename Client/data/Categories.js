@@ -1,4 +1,4 @@
-export default data = [
+export default categories = [
     {
         "title": "Pizza",
         "price": "from $5.95",

@@ -1,4 +1,4 @@
-export default data = [
+export default restaurants = [
     {
         "title": "HurryFox Pizza",
         "subtitle": "$, pizza, fastfood",
