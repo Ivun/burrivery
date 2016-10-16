@@ -14,9 +14,6 @@ export default class Home extends Component {
             dataSource: ds.cloneWithRows(data)
         };
     }
-    navSecond(){
-        this.props.navigator.push({title: 'Senior Burrito', index: 1})
-    }
 
     componentDidMount(){
         FCM.getFCMToken().then(token => {
@@ -56,7 +53,7 @@ export default class Home extends Component {
                 <View style={{paddingBottom: 56 }}>
                     <ListView
                         dataSource={this.state.dataSource}
-                        renderRow={(data) => <Row {...data} />}
+                        renderRow={(data) => <Row navigator={this.props.navigator} {...data} />}
                     />
                 </View>
             </ScrollView>

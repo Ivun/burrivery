@@ -73,7 +73,7 @@ export default class Burrivery extends Component {
                             case 1:
                                 return (<MyScene title={'Salads'} data={require('./components/Data')} />)
                             case 2:
-                                return (<MyScene title={'Salads'} data={require('./components/Data')} />)
+                                return (<MyScene title={'Kuku'} data={require('./components/Data')} />)
                             case 3:
                                 return (<MyScene title={'Salads'} data={require('./components/Data')} />)
                         }

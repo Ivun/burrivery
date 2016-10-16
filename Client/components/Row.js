@@ -2,15 +2,18 @@ import React, { Component, PropTypes } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 export default class Row extends Component {
-    _onPressButton() {
-        alert("You tapped the button!");
+    _navigate(title){
+        this.props.navigator.push({
+            title: title,
+            index: 2,
+        })
     }
 
     render() {
         const props = this.props;
         if (typeof props.price === 'undefined') {
             return (
-                <TouchableOpacity style={styles.container} onPress={this._onPressButton}>
+                <TouchableOpacity style={styles.container} onPress={ () => this._navigate(props.title) }>
                     <View style={styles.leftConent}>
                         <Image source={{ uri: props.picture.thumbnail}} style={styles.photo} />
                         <View>
@@ -26,7 +29,7 @@ export default class Row extends Component {
             );
         } else {
             return (
-                <TouchableOpacity style={styles.container} onPress={this._onPressButton}>
+                <TouchableOpacity style={styles.container} onPress={ () => this._navigate() } >
                     <View style={styles.leftConent}>
                         <Image source={{ uri: props.picture.thumbnail}} style={styles.photo} />
                         <View>
