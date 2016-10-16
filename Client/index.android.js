@@ -90,10 +90,10 @@ export default class Burrivery extends Component {
                         <View style={{ flex: 1, }}>
                             {this.renderRouteScene(route,navigator)}
                             <View style={styles.bottomNav}>
-                                <BottomNavItem title={"Home"} icon={require('./images/home.png')} onPress={() => alert('load more')} />
+                                <BottomNavItem title={"Home"} icon={require('./images/home.png')} onPress={() => navigator.push({index: 0,title: 'Home'})} />
                                 <BottomNavItem title={"Orders"} icon={require('./images/orders.png')} onPress={() => alert('load more')} />
                                 <BottomNavItem title={"Account"} icon={require('./images/user.png')} onPress={() => alert('load more')} />
-                                <BottomNavItem title={"Checkout"} icon={require('./images/scooter.png')} onPress={() => navigator.push({index:4,title:'checkout'})} count={this.state.count} />
+                                <BottomNavItem title={"Checkout"} icon={require('./images/scooter.png')} onPress={() => navigator.push({index:4,title:'Checkout'})} count={this.state.count} />
                             </View>
                         </View>)
 

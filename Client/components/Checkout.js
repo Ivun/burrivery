@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { View, Text, StyleSheet, Image, TouchableHighlight, ListView,ScrollView } from 'react-native';
-import ProductRow from './ProductRow';
+import { View, Text, StyleSheet, Image, TouchableOpacity, ListView,ScrollView } from 'react-native';
 
 import ProductsApiClient from '../services/api/productsApiClient'
 import OrdersApiClient from '../services/api/ordersApiClient'
@@ -38,11 +37,11 @@ export default class Checkout extends Component{
 
         return (
             <ScrollView style={styles.container}>
+                <View>{this.renderInvoice(products)}</View>
                 <View>
-                    {this.renderInvoice(products)}
-                </View>
-                <View>
-                    <Text onPress={this.checkout.bind(this)}>Checkout me</Text>
+                    <TouchableOpacity style={styles.button} onPress={this.checkout.bind(this)}>
+                        <Text style={styles.buttonText}>Checkout me</Text>
+                    </TouchableOpacity>
                 </View>
             </ScrollView>
         );
@@ -51,7 +50,7 @@ export default class Checkout extends Component{
     renderInvoice(products){
         function renderItems(){
             return products.map((p,index)=>{
-                return <Text key={index}>{p.title} --- {p.quantity} x ${p.price}</Text>
+                return <Text style={styles.title} key={index}>{p.title} - {p.quantity} x ${p.price}</Text>
             });
         }
 
@@ -80,7 +79,24 @@ export default class Checkout extends Component{
 
 const styles = StyleSheet.create({
     container: {
-        paddingTop: 56,
+        paddingTop: 76,
+        paddingBottom: 76,
         backgroundColor: '#fff',
-    }
+        paddingLeft: 20,
+        paddingRight: 20,
+    },
+    title: {
+        fontSize: 24,
+    },
+    button: {
+        padding: 10,
+        backgroundColor: 'orange',
+        marginTop: 10,
+        marginBottom: 10,
+    },
+    buttonText: {
+        color: '#fff',
+        textAlign: 'center',
+        fontSize: 18,
+    },
 });

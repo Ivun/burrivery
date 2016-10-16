@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingBottom: 56,
+        paddingTop: 56,
         backgroundColor: '#fff',
     },
     title: {
