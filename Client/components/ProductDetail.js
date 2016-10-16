@@ -62,7 +62,9 @@ export default class ProductDetail extends Component{
 
     _update(){
         const currentOrderQuantity = this._getCurrentOrderQuantity();
-        return this._updateQuantity(this.state.quantity - currentOrderQuantity).then(this._setOrder).catch(()=>{});
+        return this._updateQuantity(this.state.quantity - currentOrderQuantity).then(()=>{
+            this.props.navigator.pop();
+        }).catch(()=>{});
     }
 
     _getCurrentOrderQuantity(){
@@ -80,15 +82,12 @@ export default class ProductDetail extends Component{
     }
 
     _setOrder(order){
-    
         var newState = {...this.state};
         newState = {...newState, order};
 
         var currentOrderItem = this._getOrderItem(order, this.props.productId);
 
-
         if (currentOrderItem){
-
             newState = {...newState, quantity: currentOrderItem.quantity};
         }
 

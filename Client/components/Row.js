@@ -3,9 +3,9 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 export default class Row extends Component {
     _navigate(title){
-        let index = 2;
+        let index = 1;
         if (this.props.product) {
-            index = 3
+            index = 2
         }
 
         this.props.navigator.push({

@@ -84,11 +84,11 @@ export default class Burrivery extends Component {
                             case 0:
                                 return (<Home navigator={navigator}  style={styles.home}/>);
                             case 1:
-                                return (<MyScene navigator={navigator}  title={'Salads'} data={require('./data/Categories')} />)
-                            case 2:
                                 return (<Category navigator={navigator}  title={'Kuku'} data={categories} />)
-                            case 3:
+                            case 2:
                                 return (<MyScene navigator={navigator} title={'Salads'} data={require('./components/Data')}/>)
+                            case 3:
+                                return (<ProductDetail navigator={navigator} title={'Salads'} data={require('./components/Data')} productId={route.productId}/>)
                             case 4:
                                 return (<ProductDetail navigator={navigator} title={'Salads'} data={require('./components/Data')} productId={route.productId}/>)
                         }
