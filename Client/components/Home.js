@@ -38,18 +38,14 @@ export default class Home extends Component {
                 </View>
                 <View>
                     <ScrollView horizontal={true} style={styles.horizontal}>
-                        <IconThumb title={"Home"} icon={require('../images/home.png')} onPress={() => alert('load more')} iconSize={ {width: 56, height: 56} } />
-                        <IconThumb title={"Home"} icon={require('../images/home.png')} onPress={() => alert('load more')} iconSize={ {width: 56, height: 56} } />
-                        <IconThumb title={"Home"} icon={require('../images/home.png')} onPress={() => alert('load more')} iconSize={ {width: 56, height: 56} } />
-                        <IconThumb title={"Home"} icon={require('../images/home.png')} onPress={() => alert('load more')} iconSize={ {width: 56, height: 56} } />
-                        <IconThumb title={"Home"} icon={require('../images/home.png')} onPress={() => alert('load more')} iconSize={ {width: 56, height: 56} } />
-                        <IconThumb title={"Home"} icon={require('../images/home.png')} onPress={() => alert('load more')} iconSize={ {width: 56, height: 56} } />
-                        <IconThumb title={"Home"} icon={require('../images/home.png')} onPress={() => alert('load more')} iconSize={ {width: 56, height: 56} } />
-                        <IconThumb title={"Home"} icon={require('../images/home.png')} onPress={() => alert('load more')} iconSize={ {width: 56, height: 56} } />
-                        <IconThumb title={"Home"} icon={require('../images/home.png')} onPress={() => alert('load more')} iconSize={ {width: 56, height: 56} } />
-                        <IconThumb title={"Home"} icon={require('../images/home.png')} onPress={() => alert('load more')} iconSize={ {width: 56, height: 56} } />
-                        <IconThumb title={"Home"} icon={require('../images/home.png')} onPress={() => alert('load more')} iconSize={ {width: 56, height: 56} } />
-                        <IconThumb title={"Home"} icon={require('../images/home.png')} onPress={() => alert('load more')} iconSize={ {width: 56, height: 56} } />
+                        <IconThumb title={"Pizza"} icon={require('../images/tags/pizza.png')} onPress={() => alert('load more')} iconSize={ {width: 56, height: 56} } />
+                        <IconThumb title={"Sushi"} icon={require('../images/tags/sushi.png')} onPress={() => alert('load more')} iconSize={ {width: 56, height: 56} } />
+                        <IconThumb title={"Burger"} icon={require('../images/tags/burger.png')} onPress={() => alert('load more')} iconSize={ {width: 56, height: 56} } />
+                        <IconThumb title={"Cake"} icon={require('../images/tags/cake.png')} onPress={() => alert('load more')} iconSize={ {width: 56, height: 56} } />
+                        <IconThumb title={"Drinks"} icon={require('../images/tags/drinks.png')} onPress={() => alert('load more')} iconSize={ {width: 56, height: 56} } />
+                        <IconThumb title={"Pasta"} icon={require('../images/tags/pasta.png')} onPress={() => alert('load more')} iconSize={ {width: 56, height: 56} } />
+                        <IconThumb title={"Seafood"} icon={require('../images/tags/seafood.png')} onPress={() => alert('load more')} iconSize={ {width: 56, height: 56} } />
+                        <IconThumb title={"Meat"} icon={require('../images/tags/meat.png')} onPress={() => alert('load more')} iconSize={ {width: 56, height: 56} } />
                     </ScrollView>
                 </View>
                 <TouchableOpacity onPress={this.navSecond.bind(this)}>
