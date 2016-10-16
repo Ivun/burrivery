@@ -24,6 +24,7 @@ export default class ProductList extends Component {
         const props = this.props;
         return (
                 <ListView
+                    enableEmptySections={true}
                     style={styles.container}
                     dataSource={this.state.dataSource}
                     renderRow={(data) => <ProductRow {...data} navigator={props.navigator}/>}

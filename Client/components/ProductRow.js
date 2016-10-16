@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 export default class ProductRow extends Component {
     _navigate(title, id){
         this.props.navigator.push({
-            index: 3,
+            index: 4,
             productId:id
         })
     }
