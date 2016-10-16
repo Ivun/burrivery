@@ -16,6 +16,10 @@ class OrdersApiClient extends BaseApiClient{
     pay(orderId){
         return super.post(`orders/${orderId}/pay`);
     }
+
+    active(){
+        return super.get('orders/active');
+    }
 }
 
 export default new OrdersApiClient();

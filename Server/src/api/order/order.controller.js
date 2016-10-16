@@ -16,6 +16,12 @@ export const index = ({ querymen: { query, select, cursor } }, res, next) =>
     .then(success(res))
     .catch(next)
 
+export const activeOrders = ({ user }, res, next) =>
+  Order.find({status:{$in:['paid','accepted','ordered','shipping']}})
+    .then((orders) => orders.map((order) => order.view()))
+    .then(success(res))
+    .catch(next)
+
 export const show = ({ params }, res, next) =>
   Order.findById(params.id)
     .then(notFound(res))

@@ -6,6 +6,7 @@ import MyScene from './components/TestScene';
 import Category from './components/Category';
 import ProductDetail from './components/ProductDetail'
 import Checkout from './components/Checkout'
+import ClientOrders from './components/ClientOrders'
 
 import categories from './data/Categories';
 
@@ -117,11 +118,13 @@ export default class Burrivery extends Component {
             case 1:
                 return (<Category navigator={navigator}  title={'Kuku'} data={categories} />)
             case 2:
-                return (<MyScene navigator={navigator} title={'Salads'} data={require('./components/Data')}/>)
+                return (<MyScene navigator={navigator} title={'Salads'}/>)
             case 3:
-                return (<ProductDetail navigator={navigator} title={'Salads'} data={require('./components/Data')} productId={route.productId}/>)
+                return (<ProductDetail navigator={navigator} title={'Salads'} productId={route.productId}/>)
             case 4:
-                return (<Checkout navigator={navigator} title={'Salads'} data={require('./components/Data')}/>)
+                return (<Checkout navigator={navigator} title={'Salads'}/>)
+            case 5:
+                return (<ClientOrders navigator={navigator} title={'Client Orders'}/>)
         }
     }
 }
@@ -143,8 +146,6 @@ const NavigationBarRouteMapper = {
                 </TouchableOpacity>
             );
         }
-
-
     },
 
     RightButton: function(route, navigator, index, navState) {
